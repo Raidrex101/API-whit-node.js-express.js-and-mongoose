@@ -46,6 +46,10 @@ const userSchema = new mongoose.Schema({
     match: /^[a-zA-Z0-9]+$/i,
     minlength: 8,
     maxlength: 20
+  },
+  isActive: {
+    type: Boolean,
+    default: true
   }
 }, { timestamps: true, versionKey: false })
 
