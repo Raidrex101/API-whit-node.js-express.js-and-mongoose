@@ -47,7 +47,7 @@ const userSchema = new mongoose.Schema({
     minlength: 8,
     maxlength: 20
   }
-}, { timestamp: true })
+}, { timestamps: true })
 
 const User = mongoose.model('USer', userSchema)
 
