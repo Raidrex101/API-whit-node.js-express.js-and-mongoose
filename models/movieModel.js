@@ -20,7 +20,7 @@ const movieSchema = new mongoose.Schema({
   director: [{
     type: mongoose.Schema.Types.ObjectId, ref: 'Directors', required: true
   }],
-  actors: [{
+  cast: [{
     type: mongoose.Schema.Types.ObjectId, ref: 'Actors', required: true
   }],
   durationMins: {
