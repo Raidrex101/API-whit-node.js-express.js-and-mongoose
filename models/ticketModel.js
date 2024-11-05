@@ -7,10 +7,6 @@ const ticketSchema = new mongoose.Schema({
   movieId: {
     type: mongoose.Schema.Types.ObjectId, ref: 'Movie', required: true
   },
-  movie: {
-    type: String,
-    required: true
-  },
   quantity: {
     type: Number,
     required: true,

@@ -27,6 +27,10 @@ const movieSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  functionTime: {
+    type: Date,
+    required: true
+  },
   rating: {
     type: Number,
     min: 0,

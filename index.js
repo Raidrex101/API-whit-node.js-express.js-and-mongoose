@@ -2,6 +2,7 @@ import express from 'express'
 import { connect } from './config/database.js'
 import userRoutes from './routes/userRoutes.js'
 import movieRoutes from './routes/movieRoutes.js'
+import ticketRoutes from './routes/TicketRoutes.js'
 
 const PORT = process.env.PORT || 3000
 
@@ -13,6 +14,7 @@ api.use(express.json())
 
 api.use('/api/v1/users', userRoutes)
 api.use('/api/v1/movies', movieRoutes)
+api.use('/api/v1/tickets', ticketRoutes)
 
 connect().then(() => {
   api.listen(PORT, () => {
