@@ -27,7 +27,7 @@ const createMovie = async (req, res) => {
   try {
     const directorModel = await Promise.all(movieData.director.map(async (director) => {
       // si existe lo regresa si no lo crea
-      const existingDirector = await Directors.findOne({ firstNamae: director.firstName, lastName: director.lastName, birthDate: director.birthDate })
+      const existingDirector = await Directors.findOne({ firstName: director.firstName, lastName: director.lastName, birthDate: director.birthDate })
 
       if (existingDirector) {
         return existingDirector
@@ -62,6 +62,13 @@ const createMovie = async (req, res) => {
   }
 }
 
+// READ
+
+const getAllMovies = async (req, res) => {
+  
+}
+
 export {
-  createMovie
+  createMovie,
+  getAllMovies
 }

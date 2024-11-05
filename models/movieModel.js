@@ -33,6 +33,10 @@ const movieSchema = new mongoose.Schema({
     max: 10,
     required: true
   },
+  seatPrice: {
+    type: Number,
+    required: true
+  },
   seatsLeft: {
     type: Number,
     max: 40,
