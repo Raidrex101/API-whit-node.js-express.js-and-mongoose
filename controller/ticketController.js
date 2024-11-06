@@ -1,6 +1,7 @@
 import Ticket from '../models/ticketModel.js'
 import Movie from '../models/movieModel.js'
 
+// CREATE
 const createTicket = async (req, res) => {
   const { quantity, seats } = req.body
   const { customerId, movieId } = req.params
