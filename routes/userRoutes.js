@@ -1,8 +1,11 @@
 import express from 'express'
-import { createUser } from '../controller/userController.js'
+import { getUsers, getEmployees } from '../controller/userController.js'
+import { isAuth } from '../middlewares/isAuth.js'
+import { isAdmin } from '../middlewares/isAdmin.js'
+import { isEmployeeOrAdmin } from '../middlewares/isEmployeeOrAdmin.js'
 
 const userRoutes = express.Router()
 
-userRoutes.post('/', createUser)
-
+userRoutes.get('/users', isAuth, isEmployeeOrAdmin, getUsers)
+userRoutes.get('/employees', isAuth, isAdmin, getEmployees)
 export default userRoutes

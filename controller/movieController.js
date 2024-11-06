@@ -65,7 +65,15 @@ const createMovie = async (req, res) => {
 // READ
 
 const getAllMovies = async (req, res) => {
-  
+  try {
+    const movies = await Movie
+      .find({ isActive: true })
+      .populate('Directors', 'firstName lastName bio')
+      .populate('cast', 'firstName lastName')
+    res.status(200).json(movies)
+  } catch (error) {
+    res.status(400).json({ message: 'Error getting movies:', error: error.message })
+  }
 }
 
 export {

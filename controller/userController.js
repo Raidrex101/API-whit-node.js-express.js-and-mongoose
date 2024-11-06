@@ -1,22 +1,30 @@
 import User from '../models/userModel.js'
 
 // CREATE
-const createUser = async (req, res) => {
-  const userData = req.body
+// no se realiza una funcion para crear ya que de eso se encarga uthController
 
-  // Validations
-  if (Object.keys(userData).length === 0) {
-    return res.status(400).json({ message: 'No  user data provided' })
-  }
-
+// READ
+const getUsers = async (req, res) => {
   try {
-    const newUser = await User.create(userData)
-    res.status(201).json(newUser)
+    const users = await User
+      .find({ isActive: true, role: 'CUSTOMER' })
+    res.status(200).json(users)
   } catch (error) {
-    res.status(400).json({ message: error.message })
+    res.status(500).json({ message: 'Error getting users:', error: error.message })
+  }
+}
+
+const getEmployees = async (req, res) => {
+  try {
+    const employee = await User
+      .find({ isActive: true, role: 'EMPLOYEE' })
+    res.status(200).json(employee)
+  } catch (error) {
+
   }
 }
 
 export {
-  createUser
+  getUsers,
+  getEmployees
 }

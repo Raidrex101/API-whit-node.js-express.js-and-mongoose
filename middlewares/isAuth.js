@@ -25,7 +25,8 @@ const isAuth = (req, res, next) => {
       return res.status(401).json({ message: 'Token expired' })
     }
 
-    req.role = payload.role
+    req.role = payload.role // pasa el rol de la payload al request
+    req.userId = payload._id // pasa el id del usuario de la payload al request
     next()
   } catch (error) {
     res.status(401).json({ message: 'Invalid token' })

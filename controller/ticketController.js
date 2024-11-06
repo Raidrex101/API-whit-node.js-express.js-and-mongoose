@@ -42,6 +42,21 @@ const createTicket = async (req, res) => {
   }
 }
 
+const getMyTickets = async (req, res) => {
+  const { customerId } = req.params
+
+  if (customerId !== req.userId) {
+    return res.status(403).json({ message: 'Forbidden' })
+  }
+  try {
+    const myTickets = await Ticket.find({ customerId })
+    return res.status(200).json(myTickets)
+  } catch (error) {
+
+  }
+}
+
 export {
-  createTicket
+  createTicket,
+  getMyTickets
 }

@@ -13,14 +13,15 @@ const register = async (req, res) => {
     const saltRounds = 10
     const hashedPassword = await bcrypt.hash(password, saltRounds)
 
-    req.body.passwprd = hashedPassword
+    req.body.password = hashedPassword
 
     const newUser = await User.create(req.body)
-    newUser.pasword = undefined
+    newUser.password = undefined
+    newUser.email = undefined
 
-    res.status(201).json({ message: 'User registered successfully' })
+    res.status(201).json({ message: 'User registered successfully', newUser })
   } catch (error) {
-    res.status(500).json('Error Creating User:', error.message)
+    res.status(500).json({ message: 'Error registering user:', error: error.message })
   }
 }
 
@@ -54,7 +55,7 @@ const login = async (req, res) => {
 
     return res.status(200).json({ message: 'User Logged In', token })
   } catch (error) {
-
+    res.status(500).json({ message: 'Error Logging In:', error: error.message })
   }
 }
 
