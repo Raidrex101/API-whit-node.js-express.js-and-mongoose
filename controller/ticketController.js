@@ -28,7 +28,7 @@ const createTicket = async (req, res) => {
       quantity,
       seatPrice,
       totalValue,
-      functionTime: movie.finctionTime,
+      functionTime: movie.functionTime,
       seats
     })
 
