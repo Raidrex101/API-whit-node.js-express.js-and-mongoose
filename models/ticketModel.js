@@ -31,7 +31,7 @@ const ticketSchema = new mongoose.Schema({
         // Regex para validar los asientos (A1 a H10)
         return v.every(seat => /^[A-H]([1-9]|10)$/.test(seat))
       },
-      message: props => `${props.value} no es un asiento válido! Debe ser de la forma A1 a H10.`
+      message: props => `One or more seats that you requested: ${props.value.join(', ')} are not valid. Please use A1 to H10.`
     },
     unique: true // Evita duplicados
   }
