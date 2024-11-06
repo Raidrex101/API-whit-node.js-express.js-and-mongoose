@@ -52,7 +52,7 @@ const getMyTickets = async (req, res) => {
     const myTickets = await Ticket.find({ customerId })
     return res.status(200).json(myTickets)
   } catch (error) {
-
+    res.status(400).json({ message: error.message })
   }
 }
 
