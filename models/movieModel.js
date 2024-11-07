@@ -57,7 +57,7 @@ const movieSchema = new mongoose.Schema({
   seatsAviable: [{
     type: String,
     enum: seats,
-    default: seats
+    default: () => seats // al crear el documento se ejecuta la funcion para que utilice los valores por defecto en automatico para cada pelicula creada
   }],
   isActive: {
     type: Boolean,
