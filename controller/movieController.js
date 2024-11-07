@@ -75,7 +75,7 @@ const getAllMovies = async (req, res) => {
   if (releaseDate) {
     const date = new Date(releaseDate)
 
-    if (releaseDate.lenght === 4) { // por si se escribe solo el año
+    if (releaseDate.length === 4) { // por si se escribe solo el año
       filter.releaseDate = {
         $gte: new Date(date.getFullYear(), 0, 1), // si se escribe solo el año en la peticion buscara en todo ese año empezando por 0 = enero 1 = dia
         $lte: new Date(date.getFullYear(), 11, 31) // 11 = diciembre 31 = dia
