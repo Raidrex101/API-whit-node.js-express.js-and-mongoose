@@ -56,7 +56,8 @@ const movieSchema = new mongoose.Schema({
   },
   seatsAviable: [{
     type: String,
-    enum: seats
+    enum: seats,
+    default: seats
   }],
   isActive: {
     type: Boolean,
