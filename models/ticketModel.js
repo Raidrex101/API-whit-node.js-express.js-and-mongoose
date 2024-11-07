@@ -32,8 +32,7 @@ const ticketSchema = new mongoose.Schema({
         return v.every(seat => /^[A-H]([1-9]|10)$/.test(seat))
       },
       message: props => `One or more seats that you requested: ${props.value.join(', ')} are not valid. Please use A1 to H10.`
-    },
-    unique: true // Evita duplicados
+    }
   }
 }, { timestamps: true, versionKey: false })
 

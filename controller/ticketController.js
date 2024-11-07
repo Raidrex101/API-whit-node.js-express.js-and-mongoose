@@ -33,13 +33,13 @@ const createTicket = async (req, res) => {
       seats
     })
 
-    if (seats.lenght !== quantity) { // si la cantidad no es igual a la longitud de los sats solicitados dara error
+    if (seats.length !== quantity) { // si la cantidad no es igual a la longitud de los sats solicitados dara error
       return res.status(400).json({ message: 'The quantity of seats do not match with the quantity of seats requested' })
+    } else {
+      movie.seatsAviable = movie.seatsAviable.filter(seat => !seats.includes(seat)) // se filtran los acientos que no esten en el seats de ticket si se selecciona A1 regresa todos menos A1
+      movie.seatsLeft -= quantity // se resta la cantidad solicitada en el tiquet a los acientos disponibles en seatsLeft de movies
+      await movie.save()
     }
-
-    movie.seatsAviable = movie.seatsAviable.filter(seat => !seats.includes(seat)) // se filtran los acientos que no esten en el seats de ticket si se selecciona A1 regresa todos menos A1
-    movie.seatsLeft -= quantity // se resta la cantidad solicitada en el tiquet a los acientos disponibles en seatsLeft de movies
-    await movie.save()
 
     res.status(201).json(newTicket)
   } catch (error) {
